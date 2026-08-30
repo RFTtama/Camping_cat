@@ -52,7 +52,8 @@ namespace Assets.Scripts.View
 			{
 				sw.WriteLine(json);
 				sw.WriteLine();
-			}
+                UnityEngine.Debug.Log("Model Log Wrote");
+            }
 		}
 	}
 }

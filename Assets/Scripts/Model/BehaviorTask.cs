@@ -351,6 +351,7 @@ namespace Assets.Scripts.Model
 					sw.WriteLine(tl);
 					sw.WriteLine(wr);
 					sw.WriteLine();
+					UnityEngine.Debug.Log("Model Log Wrote");
 				}
 			}
 			catch (Exception ex)
