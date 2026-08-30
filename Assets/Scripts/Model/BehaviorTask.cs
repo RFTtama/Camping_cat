@@ -329,6 +329,8 @@ namespace Assets.Scripts.Model
 					func();
 				}
 				_finalCalcTime = DateTimeNow;
+
+				// デバッグ用出力
 				string tl = string.Empty;
 				DateTime dt = SystemInfo.Instance.GetSystemDate().Date;
 				for (int i = 0; i < _todayBehavior.Length; i++)
@@ -343,6 +345,13 @@ namespace Assets.Scripts.Model
 				}
 				UnityEngine.Debug.Log(tl + "\n");
 				UnityEngine.Debug.Log(wr);
+				using (StreamWriter sw = new ("modelupdatelog.txt", true))
+				{
+					sw.WriteLine(SystemInfo.Instance.GetSystemDate().ToString());
+					sw.WriteLine(tl);
+					sw.WriteLine(wr);
+					sw.WriteLine();
+				}
 			}
 			catch (Exception ex)
 			{
