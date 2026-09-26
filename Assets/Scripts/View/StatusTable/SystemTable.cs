@@ -79,6 +79,5 @@ namespace Assets.Scripts.View.StatusTable
 		{
 			return SunRiseTime;
 		}
-
     }
 }

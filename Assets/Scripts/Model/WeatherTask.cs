@@ -100,8 +100,8 @@ namespace Assets.Scripts.Model
 			_apiKey = string.Empty;
 			_city = string.Empty;
 			_weatherId = 800;
-			_sunsetTime = SystemInfo.Instance.GetSystemDate().Date.AddHours(19.0);
-			_sunriseTime = SystemInfo.Instance.GetSystemDate().Date.AddHours(5);
+			_sunsetTime = FactorySystemDatas.Create().GetSystemDate().Date.AddHours(19.0);
+			_sunriseTime = FactorySystemDatas.Create().GetSystemDate().Date.AddHours(5);
 			_location = new LocationData();
 		}
 

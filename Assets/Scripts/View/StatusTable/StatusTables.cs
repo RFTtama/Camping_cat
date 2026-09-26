@@ -12,7 +12,7 @@ namespace Assets.Scripts.View.StatusTable
 
 		private StatusTables()
 		{
-			SystemTbl = SystemTable.Instance;
+			SystemTbl = FactorySystemTable.Create();
 		}
 	}
 }

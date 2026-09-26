@@ -35,7 +35,7 @@ namespace Assets.Scripts.View
 		public void Update(ViewUpdateData arg)
 		{
 			// 各テーブルの情報を更新する
-			systemTable.UpDateTime = SystemInfo.Instance.GetSystemDate();
+			systemTable.UpDateTime = FactorySystemDatas.Create().GetSystemDate();
 			systemTable.UpDateTimeString = systemTable.UpDateTime.ToString();
 			systemTable.NowBehaviorId = arg.BehaviorId;
 			systemTable.NowBehaviorName = arg.BehaviorName;

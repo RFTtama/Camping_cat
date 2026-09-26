@@ -20,5 +20,15 @@ namespace Assets.Scripts.View.StatusTable
 		/// </summary>
 		/// <returns></returns>
 		public string GetNowBehaviorName();
+		/// <summary>
+		/// 日の入りの時間を取得する
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunSetTime();
+		/// <summary>
+		/// 日の出の時間を取得する
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunRiseTime();
 	}
 }

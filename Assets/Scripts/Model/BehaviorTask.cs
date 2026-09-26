@@ -21,12 +21,7 @@ namespace Assets.Scripts.Model
 		private const string CONFIG_FILE = "config.json";
 		private const int INTERVAL = 5000;
 
-		//デバッグ用：現在日時取得プロパティ
-#if false
-		private DateTime DateTimeNow => SystemInfo.Instance.GetSystemDate().Date;
-#else
-		private DateTime DateTimeNow => SystemInfo.Instance.GetSystemDate();
-#endif
+		private DateTime DateTimeNow => FactorySystemDatas.Create().GetSystemDate();
 
 		//シリアライズ用設定クラス
 		[Serializable]
@@ -331,7 +326,7 @@ namespace Assets.Scripts.Model
 
 				// デバッグ用出力
 				string tl = string.Empty;
-				DateTime dt = SystemInfo.Instance.GetSystemDate().Date;
+				DateTime dt = FactorySystemDatas.Create().GetSystemDate().Date;
 				for (int i = 0; i < _todayBehavior.Length; i++)
 				{
 					tl += $"{dt.AddMinutes(i * 10):HH:mm}, ";
@@ -346,7 +341,7 @@ namespace Assets.Scripts.Model
 				UnityEngine.Debug.Log(wr);
 				using (StreamWriter sw = new ("modelupdatelog.txt", true))
 				{
-					sw.WriteLine(SystemInfo.Instance.GetSystemDate().ToString());
+					sw.WriteLine(FactorySystemDatas.Create().GetSystemDate().ToString());
 					sw.WriteLine(tl);
 					sw.WriteLine(wr);
 					sw.WriteLine();
