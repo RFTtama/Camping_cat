@@ -33,7 +33,25 @@ namespace Assets.Scripts.Model
 			return _behaviorTask.GetNowBehaviorId();
 		}
 
-		public void Dispose()
+        /// <summary>
+        /// 日の出の時間を取得する
+        /// </summary>
+        /// <returns>日の出時刻</returns>
+        public DateTime GetSunRiseTime()
+		{
+			return _behaviorTask.GetSunRiseTime();
+		}
+
+        /// <summary>
+        /// 日の入の時間を取得する
+        /// </summary>
+        /// <returns>日の入時刻</returns>
+        public DateTime GetSunSetTime()
+		{
+			return _behaviorTask.GetSunSetTime();
+		}
+
+        public void Dispose()
 		{
 			_behaviorTask?.Dispose();
 		}

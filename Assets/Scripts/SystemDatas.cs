@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-	public class SystemInfo : ISystemInfo
+	public class SystemDatas : ISystemDatas
 	{
-		private static Lazy<SystemInfo> _lazy = new Lazy<SystemInfo>(() => new SystemInfo(), isThreadSafe: true);
-		public static ISystemInfo Instance => _lazy.Value;
+		private static Lazy<SystemDatas> _lazy = new Lazy<SystemDatas>(() => new SystemDatas(), isThreadSafe: true);
+		public static ISystemDatas Instance => _lazy.Value;
 
-		private SystemInfo()
+		private SystemDatas()
 		{
 
 		}

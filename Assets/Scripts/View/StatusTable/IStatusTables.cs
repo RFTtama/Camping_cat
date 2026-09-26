@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.View.StatusTable
 {
-	public interface IStatusTables : IDisposable
+	public interface IStatusTables
 	{
 		public ISystemTable SystemTbl { get; }
 	}

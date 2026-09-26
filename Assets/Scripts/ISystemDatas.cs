@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public interface ISystemInfo
+public interface ISystemDatas
 {
     /// <summary>
     /// システム上の時間情報を取得する

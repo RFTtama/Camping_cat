@@ -63,6 +63,7 @@ namespace Assets.Scripts.Model
 		private LocationData _location;
 		private int _weatherId;
 		private DateTimeOffset _sunsetTime;
+		private DateTimeOffset _sunriseTime;
 
 		//ゲッター
 
@@ -84,13 +85,23 @@ namespace Assets.Scripts.Model
 			return _sunsetTime;
 		}
 
+		/// <summary>
+		/// SunriseTimeを取得する
+		/// </summary>
+		/// <returns></returns>
+		public DateTimeOffset GetSunriseTime()
+		{
+			return _sunriseTime;
+		}
+
 
 		private WeatherTask()
 		{
 			_apiKey = string.Empty;
 			_city = string.Empty;
 			_weatherId = 800;
-			_sunsetTime = SystemInfo.Instance.GetSystemDate().Date.AddHours(19.0);
+			_sunsetTime = FactorySystemDatas.Create().GetSystemDate().Date.AddHours(19.0);
+			_sunriseTime = FactorySystemDatas.Create().GetSystemDate().Date.AddHours(5);
 			_location = new LocationData();
 		}
 
@@ -186,6 +197,7 @@ namespace Assets.Scripts.Model
 					_weatherId = response.weather[0].id;
 					SysResponse sysres = JsonUtility.FromJson<SysResponse>(json);
 					_sunsetTime = DateTimeOffset.FromUnixTimeSeconds(sysres.sys.sunset).ToLocalTime();
+					_sunriseTime = DateTimeOffset.FromUnixTimeSeconds(sysres.sys.sunrise).ToLocalTime();
 
 					UnityEngine.Debug.Log($"Weather: {_weatherId}, Sunset Time: {_sunsetTime}");
 				}

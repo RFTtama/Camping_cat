@@ -9,5 +9,7 @@ namespace Assets.Scripts.Model
 		public int GetWeatherId();
 
 		public DateTimeOffset GetSunsetTime();
-	}
+		public DateTimeOffset GetSunriseTime();
+
+    }
 }

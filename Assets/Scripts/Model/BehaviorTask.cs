@@ -21,12 +21,7 @@ namespace Assets.Scripts.Model
 		private const string CONFIG_FILE = "config.json";
 		private const int INTERVAL = 5000;
 
-		//デバッグ用：現在日時取得プロパティ
-#if false
-		private DateTime DateTimeNow => SystemInfo.Instance.GetSystemDate().Date;
-#else
-		private DateTime DateTimeNow => SystemInfo.Instance.GetSystemDate();
-#endif
+		private DateTime DateTimeNow => FactorySystemDatas.Create().GetSystemDate();
 
 		//シリアライズ用設定クラス
 		[Serializable]
@@ -47,8 +42,7 @@ namespace Assets.Scripts.Model
 					json = sr.ReadToEnd();
 				}
 				Config cfg = JsonUtility.FromJson<Config>(json);
-				_weatherTask = WeatherTask.Instance;
-				//                _weatherTask = ForDebug.DWeatherTask.Instance;
+				_weatherTask = FactoryWeatherTask.Create();
 				_weatherTask.SetInitialData(cfg.apiKey, cfg.city);
 
 				//今日の行動リスト初期化
@@ -332,7 +326,7 @@ namespace Assets.Scripts.Model
 
 				// デバッグ用出力
 				string tl = string.Empty;
-				DateTime dt = SystemInfo.Instance.GetSystemDate().Date;
+				DateTime dt = FactorySystemDatas.Create().GetSystemDate().Date;
 				for (int i = 0; i < _todayBehavior.Length; i++)
 				{
 					tl += $"{dt.AddMinutes(i * 10):HH:mm}, ";
@@ -347,7 +341,7 @@ namespace Assets.Scripts.Model
 				UnityEngine.Debug.Log(wr);
 				using (StreamWriter sw = new ("modelupdatelog.txt", true))
 				{
-					sw.WriteLine(SystemInfo.Instance.GetSystemDate().ToString());
+					sw.WriteLine(FactorySystemDatas.Create().GetSystemDate().ToString());
 					sw.WriteLine(tl);
 					sw.WriteLine(wr);
 					sw.WriteLine();
@@ -424,6 +418,24 @@ namespace Assets.Scripts.Model
 					_todayBehavior[selectedInd] = BehaviorId.BehaviorId.Idle;
 				}
 			}
+		}
+
+		/// <summary>
+		/// 日の入時間取得
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunSetTime()
+		{
+			return _weatherTask.GetSunsetTime().DateTime;
+		}
+
+		/// <summary>
+		/// 日の出時間取得
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunRiseTime()
+		{
+			return _weatherTask.GetSunriseTime().DateTime;
 		}
 
 		public void Dispose()

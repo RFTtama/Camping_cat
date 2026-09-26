@@ -16,5 +16,17 @@ namespace Assets.Scripts.Model
 		/// </summary>
 		/// <returns>行動ID</returns>
 		public BehaviorId.BehaviorId GetNowBehaviorId();
+
+		/// <summary>
+		/// 日の出の時間を取得する
+		/// </summary>
+		/// <returns>日の出時刻</returns>
+		public DateTime GetSunRiseTime();
+
+		/// <summary>
+		/// 日の入の時間を取得する
+		/// </summary>
+		/// <returns>日の入時刻</returns>
+		public DateTime GetSunSetTime();
 	}
 }
