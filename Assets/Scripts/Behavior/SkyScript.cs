@@ -19,7 +19,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		DateTime nowTime = FactorySystemDatas.Create().GetSystemDate();
+		DateTime nowTime = st.SystemTbl.GetUpDateTime();
 		Color cl = Color.skyBlue;
 
 		if (DateTime.Now.Date.AddHours(21) <= nowTime)// 9時以降
