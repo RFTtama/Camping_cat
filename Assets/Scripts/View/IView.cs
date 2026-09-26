@@ -17,5 +17,7 @@ namespace Assets.Scripts.View
 	{
 		public BehaviorId.BehaviorId BehaviorId;
 		public string BehaviorName;
+		public DateTime SunSetTime;
+		public DateTime SunRiseTime;
 	}
 }

@@ -47,8 +47,7 @@ namespace Assets.Scripts.Model
 					json = sr.ReadToEnd();
 				}
 				Config cfg = JsonUtility.FromJson<Config>(json);
-				_weatherTask = WeatherTask.Instance;
-				//                _weatherTask = ForDebug.DWeatherTask.Instance;
+				_weatherTask = FactoryWeatherTask.Create();
 				_weatherTask.SetInitialData(cfg.apiKey, cfg.city);
 
 				//今日の行動リスト初期化
@@ -424,6 +423,24 @@ namespace Assets.Scripts.Model
 					_todayBehavior[selectedInd] = BehaviorId.BehaviorId.Idle;
 				}
 			}
+		}
+
+		/// <summary>
+		/// 日の入時間取得
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunSetTime()
+		{
+			return _weatherTask.GetSunsetTime().DateTime;
+		}
+
+		/// <summary>
+		/// 日の出時間取得
+		/// </summary>
+		/// <returns></returns>
+		public DateTime GetSunRiseTime()
+		{
+			return _weatherTask.GetSunriseTime().DateTime;
 		}
 
 		public void Dispose()

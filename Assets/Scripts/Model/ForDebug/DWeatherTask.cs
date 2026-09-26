@@ -24,10 +24,16 @@ namespace Assets.Scripts.Model.ForDebug
 		public DateTimeOffset GetSunsetTime()
 		{
 			// デバッグ用モック実装
-			return DateTimeOffset.Now.AddHours(6); // 現在時刻から6時間後を夕焼け時刻とする
+			return DateTimeOffset.Now.Date.AddHours(19); // 19時
 		}
 
-		public void Dispose()
+        public DateTimeOffset GetSunriseTime()
+		{
+            // デバッグ用モック実装
+            return DateTimeOffset.Now.Date.AddHours(6); // 6時
+        }
+
+        public void Dispose()
 		{
 			// デバッグ用モック実装
 		}

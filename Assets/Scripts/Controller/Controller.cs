@@ -68,6 +68,8 @@ namespace Assets.Scripts.Controller
 			// viewに渡すデータをmodelから取得
 			newData.BehaviorId = _model.GetNowBehaviorId();
 			newData.BehaviorName = _model.GetNowBehavior();
+			newData.SunRiseTime = _model.GetSunRiseTime();
+			newData.SunSetTime = _model.GetSunSetTime();
 
 			_view?.Update(newData);
 		}

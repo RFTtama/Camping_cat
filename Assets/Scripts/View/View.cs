@@ -24,7 +24,7 @@ namespace Assets.Scripts.View
 
 		private View()
 		{
-			statusTable = StatusTables.Instance;
+			statusTable = FactoryStatusTable.GetInstance();
 			systemTable = SystemTable.Instance;
 		}
 
@@ -39,8 +39,13 @@ namespace Assets.Scripts.View
 			systemTable.UpDateTimeString = systemTable.UpDateTime.ToString();
 			systemTable.NowBehaviorId = arg.BehaviorId;
 			systemTable.NowBehaviorName = arg.BehaviorName;
+			systemTable.SunRiseTime = arg.SunRiseTime;
+			systemTable.SunSetTime = arg.SunSetTime;
+			systemTable.SunRiseTimeString = systemTable.SunRiseTime.ToString();
+			systemTable.SunSetTimeString = systemTable.SunSetTime.ToString();
 
-			UnityEngine.Debug.Log("View Update Executed");
+
+            UnityEngine.Debug.Log("View Update Executed");
 
 			StringBuilder sb = new();
 
@@ -52,8 +57,8 @@ namespace Assets.Scripts.View
 			{
 				sw.WriteLine(json);
 				sw.WriteLine();
-                UnityEngine.Debug.Log("Model Log Wrote");
-            }
+				UnityEngine.Debug.Log("Model Log Wrote");
+			}
 		}
 	}
 }
