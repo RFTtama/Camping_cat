@@ -8,19 +8,24 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
 	IStatusTables st;
 	private SpriteRenderer spriteRenderer;
+	private DateTime oldTime;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		st = FactoryStatusTable.GetInstance();
+		oldTime = new DateTime();
+		SetSpriteSize();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		DateTime nowTime = st.SystemTbl.GetUpDateTime();
-		Color cl = Color.skyBlue;
+		if (nowTime == oldTime) return;
+
+		Color cl = Color.white;
 
 		if (DateTime.Now.Date.AddHours(21) <= nowTime)// 9時以降
 		{
@@ -40,5 +45,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
 		}
 
 		spriteRenderer.color = cl;
+		oldTime = nowTime;
+		//UnityEngine.Debug.Log(cl.ToString());
+	}
+
+	private void SetSpriteSize()
+	{
+		float height = Camera.main.orthographicSize * 2.0f;
+		float width = height * Camera.main.aspect;
+
+		/*float scaleX = width / spriteRenderer.bounds.size.x;
+		float scaleY = height / spriteRenderer.bounds.size.y;
+
+		float scale = Mathf.Max(scaleX, scaleY);*/
+		float scale = Mathf.Max(height, width);
+
+		transform.localScale = new Vector3(scale, scale, 1.0f);
+		UnityEngine.Debug.Log(transform.localScale.ToString());
+
 	}
 }

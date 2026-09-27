@@ -19,5 +19,6 @@ namespace Assets.Scripts.View
 		public string BehaviorName;
 		public DateTime SunSetTime;
 		public DateTime SunRiseTime;
+		public string NowWeather;
 	}
 }

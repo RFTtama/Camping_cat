@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.BehaviorId;
+using System;
+using System.Drawing;
 using UnityEngine;
-using Assets.Scripts.BehaviorId;
 
 namespace Assets.Scripts.View.StatusTable
 {
@@ -29,6 +30,8 @@ namespace Assets.Scripts.View.StatusTable
 
 		public DateTime SunSetTime;
 		public DateTime SunRiseTime;
+
+		public string NowWeather;
 
 
         // 取得関数
@@ -79,5 +82,14 @@ namespace Assets.Scripts.View.StatusTable
 		{
 			return SunRiseTime;
 		}
-    }
+
+		/// <summary>
+		/// 天気を取得する
+		/// </summary>
+		/// <returns></returns>
+		public string GetNowWeather()
+		{
+			return NowWeather;
+		}
+	}
 }

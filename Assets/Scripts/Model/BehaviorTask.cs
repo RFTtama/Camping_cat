@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Assets.Scripts.BehaviorId;
+using System.Text;
 
 namespace Assets.Scripts.Model
 {
@@ -325,25 +326,27 @@ namespace Assets.Scripts.Model
 				_finalCalcTime = DateTimeNow;
 
 				// デバッグ用出力
-				string tl = string.Empty;
+				StringBuilder sb = new();
+				List<string> tl = new();
 				DateTime dt = FactorySystemDatas.Create().GetSystemDate().Date;
 				for (int i = 0; i < _todayBehavior.Length; i++)
 				{
-					tl += $"{dt.AddMinutes(i * 10):HH:mm}, ";
+					tl.Add($"{dt.AddMinutes(i * 10):HH:mm}");
 				}
 
-				string wr = string.Empty;
+				List<string> wr = new();
 				foreach (BehaviorId.BehaviorId id in _todayBehavior)
 				{
-					wr += id.ToString() + ",";
+					wr.Add(id.ToString());
 				}
-				UnityEngine.Debug.Log(tl + "\n");
-				UnityEngine.Debug.Log(wr);
+				for (int i = 0; i < tl.Count; i++)
+				{
+					sb.Append($"tm: {tl[i]} bh: {wr[i]}\n");
+				}
 				using (StreamWriter sw = new ("modelupdatelog.txt", true))
 				{
 					sw.WriteLine(FactorySystemDatas.Create().GetSystemDate().ToString());
-					sw.WriteLine(tl);
-					sw.WriteLine(wr);
+					sw.WriteLine(sb.ToString());
 					sw.WriteLine();
 					UnityEngine.Debug.Log("Model Log Wrote");
 				}
@@ -436,6 +439,16 @@ namespace Assets.Scripts.Model
 		public DateTime GetSunRiseTime()
 		{
 			return _weatherTask.GetSunriseTime().DateTime;
+		}
+
+		/// <summary>
+		/// 天気を取得する
+		/// </summary>
+		/// <returns></returns>
+		public string GetNowWeather()
+		{
+			WeatherIds wid = (WeatherIds)_weatherTask.GetWeatherId();
+			return wid.ToString();
 		}
 
 		public void Dispose()

@@ -28,5 +28,11 @@ namespace Assets.Scripts.Model
 		/// </summary>
 		/// <returns>日の入時刻</returns>
 		public DateTime GetSunSetTime();
+
+		/// <summary>
+		/// 天気を取得する
+		/// </summary>
+		/// <returns>天気名(英語文字列)</returns>
+		public string GetNowWeather();
 	}
 }

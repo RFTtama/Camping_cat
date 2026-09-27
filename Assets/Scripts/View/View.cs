@@ -34,8 +34,10 @@ namespace Assets.Scripts.View
 		/// <param name="arg">通知する情報</param>
 		public void Update(ViewUpdateData arg)
 		{
+			ISystemDatas sd = FactorySystemDatas.Create();
+
 			// 各テーブルの情報を更新する
-			systemTable.UpDateTime = FactorySystemDatas.Create().GetSystemDate();
+			systemTable.UpDateTime = sd.GetSystemDate();
 			systemTable.UpDateTimeString = systemTable.UpDateTime.ToString();
 			systemTable.NowBehaviorId = arg.BehaviorId;
 			systemTable.NowBehaviorName = arg.BehaviorName;
@@ -43,9 +45,9 @@ namespace Assets.Scripts.View
 			systemTable.SunSetTime = arg.SunSetTime;
 			systemTable.SunRiseTimeString = systemTable.SunRiseTime.ToString();
 			systemTable.SunSetTimeString = systemTable.SunSetTime.ToString();
+			systemTable.NowWeather = arg.NowWeather;
 
-
-            UnityEngine.Debug.Log("View Update Executed");
+			UnityEngine.Debug.Log("View Update Executed");
 
 			StringBuilder sb = new();
 
@@ -57,7 +59,7 @@ namespace Assets.Scripts.View
 			{
 				sw.WriteLine(json);
 				sw.WriteLine();
-				UnityEngine.Debug.Log("Model Log Wrote");
+				UnityEngine.Debug.Log("View Log Wrote");
 			}
 		}
 	}

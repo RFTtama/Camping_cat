@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Assets.Scripts.View.StatusTable
@@ -20,7 +21,7 @@ namespace Assets.Scripts.View.StatusTable
 		/// <returns></returns>
 		public DateTime GetUpDateTime()
 		{
-			return DateTime.Now;
+			return new DateTime(2026, 9, 27, 8, 0, 0);
 		}
 
 		/// <summary>
@@ -57,6 +58,15 @@ namespace Assets.Scripts.View.StatusTable
 		public DateTime GetSunRiseTime()
 		{
 			return DateTime.Now.Date.AddDays(6);
+		}
+
+		/// <summary>
+		/// 天気を取得する
+		/// </summary>
+		/// <returns></returns>
+		public string GetNowWeather()
+		{
+			return "Clear";
 		}
 	}
 }
