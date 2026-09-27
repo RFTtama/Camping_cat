@@ -20,15 +20,5 @@ namespace Assets.Scripts
 		{
 			return new DateTime(2026, 9, 26, 7, 00, 00);
 		}
-
-		/// <summary>
-		/// スクリーンサイズを取得する
-		/// </summary>
-		/// <returns></returns>
-		public Size GetScreenSize()
-		{
-			Size ret_size = new(1280, 720);
-			return ret_size;
-		}
 	}
 }

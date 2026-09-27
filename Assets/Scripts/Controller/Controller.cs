@@ -22,7 +22,6 @@ namespace Assets.Scripts.Controller
 
 		private Controller()
 		{
-			_initialized = false;
 		}
 
 		public void Dispose()
@@ -31,9 +30,6 @@ namespace Assets.Scripts.Controller
 
 			_view = null;
 			_model = null;
-
-			_initialized = false;
-
 		}
 
 		/// <summary>
@@ -47,11 +43,14 @@ namespace Assets.Scripts.Controller
 			_view = view;
 			_model = model;
 
+			if (null == _view || null == _model)
+			{
+				UnityEngine.Debug.Log("View or Model are null");
+				return;
+			}
+
 			// タイマ始動
 			_timer = new System.Threading.Timer(TimerFunc, null, TIMER_INTERVAL, TIMER_INTERVAL);
-
-			// 初期化OK
-			_initialized = true;
 		}
 
 		/// <summary>
@@ -61,17 +60,25 @@ namespace Assets.Scripts.Controller
 		private void TimerFunc(object state)
 		{
 			if (null == _model) return;
-			if (false == _initialized) return;
+			if (null == _view) return;
 
-			ViewUpdateData newData = new();
+			try
+			{
+				ViewUpdateData newData = new();
 
-			// viewに渡すデータをmodelから取得
-			newData.BehaviorId = _model.GetNowBehaviorId();
-			newData.BehaviorName = _model.GetNowBehavior();
-			newData.SunRiseTime = _model.GetSunRiseTime();
-			newData.SunSetTime = _model.GetSunSetTime();
+				// viewに渡すデータをmodelから取得
+				newData.BehaviorId = _model.GetNowBehaviorId();
+				newData.BehaviorName = _model.GetNowBehavior();
+				newData.SunRiseTime = _model.GetSunRiseTime();
+				newData.SunSetTime = _model.GetSunSetTime();
+				newData.NowWeather = _model.GetNowWeather();
 
-			_view?.Update(newData);
+				_view?.Update(newData);
+			}
+			catch (Exception ex)
+			{
+				UnityEngine.Debug.Log(ex.Message);
+			}
 		}
 	}
 }

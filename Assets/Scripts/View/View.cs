@@ -45,10 +45,7 @@ namespace Assets.Scripts.View
 			systemTable.SunSetTime = arg.SunSetTime;
 			systemTable.SunRiseTimeString = systemTable.SunRiseTime.ToString();
 			systemTable.SunSetTimeString = systemTable.SunSetTime.ToString();
-			systemTable.ScreenSize = sd.GetScreenSize();
-			systemTable.ScreenSizeString = sd.GetScreenSize().ToString();
-
-
+			systemTable.NowWeather = arg.NowWeather;
 
 			UnityEngine.Debug.Log("View Update Executed");
 
@@ -62,7 +59,7 @@ namespace Assets.Scripts.View
 			{
 				sw.WriteLine(json);
 				sw.WriteLine();
-				UnityEngine.Debug.Log("Model Log Wrote");
+				UnityEngine.Debug.Log("View Log Wrote");
 			}
 		}
 	}

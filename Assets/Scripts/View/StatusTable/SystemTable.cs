@@ -21,7 +21,6 @@ namespace Assets.Scripts.View.StatusTable
 		public string UpDateTimeString; //ログ用時間
         public string SunSetTimeString; //ログ用時間
         public string SunRiseTimeString; //ログ用時間
-		public string ScreenSizeString; //ログ用サイズ
 
         public DateTime UpDateTime;
 
@@ -31,7 +30,8 @@ namespace Assets.Scripts.View.StatusTable
 
 		public DateTime SunSetTime;
 		public DateTime SunRiseTime;
-		public Size ScreenSize;
+
+		public string NowWeather;
 
 
         // 取得関数
@@ -84,12 +84,12 @@ namespace Assets.Scripts.View.StatusTable
 		}
 
 		/// <summary>
-		/// スクリーンサイズを取得する
+		/// 天気を取得する
 		/// </summary>
 		/// <returns></returns>
-		public Size GetScreenSize()
+		public string GetNowWeather()
 		{
-			return ScreenSize;
+			return NowWeather;
 		}
 	}
 }

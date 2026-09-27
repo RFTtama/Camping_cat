@@ -21,7 +21,7 @@ namespace Assets.Scripts.View.StatusTable
 		/// <returns></returns>
 		public DateTime GetUpDateTime()
 		{
-			return DateTime.Now;
+			return new DateTime(2026, 9, 27, 8, 0, 0);
 		}
 
 		/// <summary>
@@ -61,12 +61,12 @@ namespace Assets.Scripts.View.StatusTable
 		}
 
 		/// <summary>
-		/// スクリーンサイズを取得する
+		/// 天気を取得する
 		/// </summary>
 		/// <returns></returns>
-		public Size GetScreenSize()
+		public string GetNowWeather()
 		{
-			return new Size(1280, 720);
+			return "Clear";
 		}
 	}
 }

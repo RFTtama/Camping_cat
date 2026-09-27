@@ -22,15 +22,5 @@ namespace Assets.Scripts
 		{
 			return DateTime.Now;
 		}
-
-		/// <summary>
-		/// スクリーンサイズを取得する
-		/// </summary>
-		/// <returns></returns>
-		public Size GetScreenSize()
-		{
-			Size ret_size = new(Screen.width, Screen.height);
-			return ret_size;
-		}
 	}
 }

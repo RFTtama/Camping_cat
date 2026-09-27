@@ -51,7 +51,16 @@ namespace Assets.Scripts.Model
 			return _behaviorTask.GetSunSetTime();
 		}
 
-        public void Dispose()
+		/// <summary>
+		/// 天気を取得する
+		/// </summary>
+		/// <returns>天気名(英語文字列)</returns>
+		public string GetNowWeather()
+		{
+			return _behaviorTask.GetNowWeather();
+		}
+
+		public void Dispose()
 		{
 			_behaviorTask?.Dispose();
 		}

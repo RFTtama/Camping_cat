@@ -32,9 +32,9 @@ namespace Assets.Scripts.View.StatusTable
 		/// <returns></returns>
 		public DateTime GetSunRiseTime();
 		/// <summary>
-		/// スクリーンサイズを取得する
+		/// 天気を取得する
 		/// </summary>
 		/// <returns></returns>
-		public Size GetScreenSize();
+		public string GetNowWeather();
 	}
 }
