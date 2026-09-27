@@ -21,7 +21,7 @@ namespace Assets.Scripts.View.StatusTable
 		/// <returns></returns>
 		public DateTime GetUpDateTime()
 		{
-			return new DateTime(2026, 9, 27, 8, 0, 0);
+			return DateTime.Now.Date.AddHours(6).AddMinutes(0);
 		}
 
 		/// <summary>
@@ -57,7 +57,7 @@ namespace Assets.Scripts.View.StatusTable
 		/// <returns></returns>
 		public DateTime GetSunRiseTime()
 		{
-			return DateTime.Now.Date.AddDays(6);
+			return DateTime.Now.Date.AddHours(6);
 		}
 
 		/// <summary>

@@ -18,7 +18,7 @@ namespace Assets.Scripts
 		/// <returns>時間情報</returns>
 		public DateTime GetSystemDate()
 		{
-			return new DateTime(2026, 9, 26, 7, 00, 00);
+			return DateTime.Now.Date.AddHours(19);
 		}
 	}
 }
