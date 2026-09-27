@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Assets.Scripts.View.StatusTable
@@ -57,6 +58,15 @@ namespace Assets.Scripts.View.StatusTable
 		public DateTime GetSunRiseTime()
 		{
 			return DateTime.Now.Date.AddDays(6);
+		}
+
+		/// <summary>
+		/// スクリーンサイズを取得する
+		/// </summary>
+		/// <returns></returns>
+		public Size GetScreenSize()
+		{
+			return new Size(1280, 720);
 		}
 	}
 }

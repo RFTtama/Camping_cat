@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Assets.Scripts.BehaviorId;
+using System;
+using System.Drawing;
 using UnityEngine;
-using Assets.Scripts.BehaviorId;
 
 namespace Assets.Scripts.View.StatusTable
 {
@@ -20,6 +21,7 @@ namespace Assets.Scripts.View.StatusTable
 		public string UpDateTimeString; //ログ用時間
         public string SunSetTimeString; //ログ用時間
         public string SunRiseTimeString; //ログ用時間
+		public string ScreenSizeString; //ログ用サイズ
 
         public DateTime UpDateTime;
 
@@ -29,6 +31,7 @@ namespace Assets.Scripts.View.StatusTable
 
 		public DateTime SunSetTime;
 		public DateTime SunRiseTime;
+		public Size ScreenSize;
 
 
         // 取得関数
@@ -79,5 +82,14 @@ namespace Assets.Scripts.View.StatusTable
 		{
 			return SunRiseTime;
 		}
-    }
+
+		/// <summary>
+		/// スクリーンサイズを取得する
+		/// </summary>
+		/// <returns></returns>
+		public Size GetScreenSize()
+		{
+			return ScreenSize;
+		}
+	}
 }

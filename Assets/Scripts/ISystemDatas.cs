@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using UnityEngine;
 
 public interface ISystemDatas
@@ -8,4 +9,9 @@ public interface ISystemDatas
     /// </summary>
     /// <returns>時間情報</returns>
     public DateTime GetSystemDate();
+    /// <summary>
+    /// スクリーンサイズを取得する
+    /// </summary>
+    /// <returns></returns>
+    public Size GetScreenSize();
 }

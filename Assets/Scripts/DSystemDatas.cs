@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace Assets.Scripts
@@ -18,6 +19,16 @@ namespace Assets.Scripts
 		public DateTime GetSystemDate()
 		{
 			return new DateTime(2026, 9, 26, 7, 00, 00);
+		}
+
+		/// <summary>
+		/// スクリーンサイズを取得する
+		/// </summary>
+		/// <returns></returns>
+		public Size GetScreenSize()
+		{
+			Size ret_size = new(1280, 720);
+			return ret_size;
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -20,6 +21,16 @@ namespace Assets.Scripts
 		public DateTime GetSystemDate()
 		{
 			return DateTime.Now;
+		}
+
+		/// <summary>
+		/// スクリーンサイズを取得する
+		/// </summary>
+		/// <returns></returns>
+		public Size GetScreenSize()
+		{
+			Size ret_size = new(Screen.width, Screen.height);
+			return ret_size;
 		}
 	}
 }

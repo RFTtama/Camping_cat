@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using UnityEngine;
 
 namespace Assets.Scripts.View.StatusTable
@@ -30,5 +31,10 @@ namespace Assets.Scripts.View.StatusTable
 		/// </summary>
 		/// <returns></returns>
 		public DateTime GetSunRiseTime();
+		/// <summary>
+		/// スクリーンサイズを取得する
+		/// </summary>
+		/// <returns></returns>
+		public Size GetScreenSize();
 	}
 }
