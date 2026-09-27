@@ -2,7 +2,7 @@ using Assets.Scripts.View.StatusTable;
 using System;
 using UnityEngine;
 
-public class SunScript : MonoBehaviour
+public class MoonScript : MonoBehaviour
 {
 	IStatusTables st;
 	private SpriteRenderer spriteRenderer;
@@ -27,9 +27,9 @@ public class SunScript : MonoBehaviour
 		DateTime sunrise = st.SystemTbl.GetSunRiseTime();
 		DateTime sunset = st.SystemTbl.GetSunSetTime();
 
-		//太陽の出てない時間なら非表示にする
-		if ((nowTime < sunrise)
-		|| (sunset <= nowTime))
+		//太陽の出ている時間なら非表示にする
+		if ((nowTime >= sunrise)
+		&& (sunset > nowTime))
 		{
 			spriteRenderer.enabled = false;
 			return;
@@ -37,23 +37,31 @@ public class SunScript : MonoBehaviour
 
 		spriteRenderer.enabled = true;
 
-		TimeSpan sunshineTime = sunset - sunrise;	//太陽の出現時間
-		TimeSpan nowsunshine = nowTime - sunrise;   //現在の太陽の位置
+		TimeSpan moonTime = sunrise.AddDays(1) - sunset;	//月の出現時間
+		TimeSpan nowmoon = nowTime - sunset;	//現在の月の位置
+		if (nowmoon.TotalMinutes < 0)//日の出前
+		{
+			nowmoon = nowTime - sunset.AddDays(-1);
+		}
 
-		float magn = (float)(nowsunshine.TotalSeconds / sunshineTime.TotalSeconds);
-		UnityEngine.Debug.Log($"Sun: {magn.ToString()}");
+		//UnityEngine.Debug.Log($"{moonTime.TotalMinutes.ToString()}, {nowmoon.TotalMinutes.ToString()}");
+
+		float magn = (float)(nowmoon.TotalSeconds / moonTime.TotalSeconds);
+		UnityEngine.Debug.Log($"Moon: {magn.ToString()}");
+		//UnityEngine.Debug.Log($"moonTime: {moonTime.TotalMinutes.ToString()}");
+		//UnityEngine.Debug.Log($"nowmoon: {nowmoon.TotalMinutes.ToString()}");
 		float pos;
 
 		//位置設定
-		if (0.5 == magn)// 太陽が中心
+		if (0.5 == magn)// 月が中心
 		{
 			pos = 0.0f;
 		}
-		else if (0.5 < magn)// 太陽が右側
+		else if (0.5 < magn)// 月が右側
 		{
 			pos = screenSize * ((magn - 0.5f) * 2.0f);
 		}
-		else// 太陽が左側
+		else// 月が左側
 		{
 			pos = (screenSize * -1.0f) * (1.0f - (magn * 2.0f));
 		}
@@ -66,7 +74,7 @@ public class SunScript : MonoBehaviour
 
 		oldTime = nowTime;
 	}
-	
+
 	/// <summary>
 	/// 画面端までの位置を計算する
 	/// </summary>
